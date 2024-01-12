@@ -1,0 +1,171 @@
+<div class="page-body">
+    <%- include('../partials/nav') %>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="mt-2 mb-2"><%- include('../partials/messages') %></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center p-3">
+						<%- include('../partials/searchForm') %> <% if(checkPermissions(user, "department.department.create") == true) { %>
+							<a class="btn btn-primary main-pg-btn btn-icon-text pull-right px-2" href="service/create" role="button">
+								<i class="fa fa-plus"> </i> Add New</a
+							>
+						<% } %>
+					</div>
+                    <div class="table-responsive p-2">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Title</th>
+                                    <th>Status</th>
+                                    <% if(checkPermissions(user, "department.department.edit") == true || checkPermissions(user,
+                                    "department.department.delete") == true ) { %>
+                                    <th><%= 'Action' %></th>
+                                    <% } %>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if(docs.length > 0){ sn = (pageNum-1) * pageLimit; docs.forEach(function(service) { %>
+                                <tr>
+                                    <td scope="row"><%= sn += 1 %></td>
+                                    <td><%= service.name ? service.name : nil %></td>
+                                    <td>
+                                        <% let badgeType = 'badge-success'; if (service.status == false) { badgeType = 'badge-danger'; } %>
+                                        <span class="text-uppercase badge <%= badgeType %>">
+                                            <% let status = 'Active'; if (service.status == false) { status = 'Inactive'; } %>
+                                            <%= status %></span>
+                                    </td>
+                                    <% if(checkPermissions(user, "service.service.edit") == true || checkPermissions(user,
+                                    "service.service.delete") == true ) { %>
+                                    <td>
+                                        <% if(checkPermissions(user, "service.service.edit") == true ) { %>
+                                        <a class="text-uppercase btn btn-light btn-sm p-1" href="/service/<%= service._id %>" role="button">
+                                            <i class="fa fa-edit"></i>
+                                            <%= 'Edit' %> <% } %>
+                                        </a>
+                                        <% if(checkPermissions(user, "department.department.delete") == true ) { %>
+                                        <button
+                                            type="button"
+                                            class="btn btn-danger btn-sm p-1"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#confirmDeleteModal"
+                                            data-href="/department/<%= department._id %>?_method=delete"
+                                            data-title="<%= 'Delete Department' %>"
+                                            data-description=" <%= 'Are you sure you want to delete?' %>"
+                                        >
+                                            <i class="fa fa-trash-alt"> </i>
+                                            <%= 'Delete' %>
+                                        </button>
+                                        <% } %>
+
+                                        <% if(checkPermissions(user, "department.department.view") == true ) { %>
+                                            <a class="btn btn-success btn-sm p-1 me-2"
+                                                href="<div class="page-body">
+    <%- include('../partials/nav') %>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="mt-2 mb-2"><%- include('../partials/messages') %></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center p-3">
+						<%- include('../partials/searchForm') %> <% if(checkPermissions(user, "department.department.create") == true) { %>
+							<a class="btn btn-primary main-pg-btn btn-icon-text pull-right px-2" href="/department/create" role="button">
+								<i class="fa fa-plus"> </i> Add New</a
+							>
+						<% } %>
+					</div>
+                    <div class="table-responsive p-2">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Title</th>
+                                    <th>Status</th>
+                                    <% if(checkPermissions(user, "department.department.edit") == true || checkPermissions(user,
+                                    "department.department.delete") == true ) { %>
+                                    <th><%= 'Action' %></th>
+                                    <% } %>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if(docs.length > 0){ sn = (pageNum-1) * pageLimit; docs.forEach(function(department) { %>
+                                <tr>
+                                    <td scope="row"><%= sn += 1 %></td>
+                                    <td><%= department.name ? department.name : nil %></td>
+                                    <td>
+                                        <% let badgeType = 'badge-success'; if (department.status == false) { badgeType = 'badge-danger'; } %>
+                                        <span class="text-uppercase badge <%= badgeType %>">
+                                            <% let status = 'Active'; if (department.status == false) { status = 'Inactive'; } %>
+                                            <%= status %></span>
+                                    </td>
+                                    <% if(checkPermissions(user, "department.department.edit") == true || checkPermissions(user,
+                                    "department.department.delete") == true ) { %>
+                                    <td>
+                                        <% if(checkPermissions(user, "department.department.edit") == true ) { %>
+                                        <a class="text-uppercase btn btn-light btn-sm p-1" href="/department/<%= department._id %>" role="button">
+                                            <i class="fa fa-edit"></i>
+                                            <%= 'Edit' %> <% } %>
+                                        </a>
+                                        <% if(checkPermissions(user, "department.department.delete") == true ) { %>
+                                        <button
+                                            type="button"
+                                            class="btn btn-danger btn-sm p-1"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#confirmDeleteModal"
+                                            data-href="/department/<%= department._id %>?_method=delete"
+                                            data-title="<%= 'Delete Department' %>"
+                                            data-description=" <%= 'Are you sure you want to delete?' %>"
+                                        >
+                                            <i class="fa fa-trash-alt"> </i>
+                                            <%= 'Delete' %>
+                                        </button>
+                                        <% } %>
+
+                                      
+                                    </td>
+                                    <% } %>
+                                </tr>
+
+                                <% }); }else{ %>
+                                <tr>
+                                    <td colspan="4" style="text-align: center">No Records found.</td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mb-3"><%- include('../partials/pagination') %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+/<%= department._id %>/service" role="button">
+                                                <i class="fa fa-plus"></i>
+                                                <!-- View Room Type -->
+                                                Services
+                                            </a>
+                                            <% } %>
+                                    </td>
+                                    <% } %>
+                                </tr>
+
+                                <% }); }else{ %>
+                                <tr>
+                                    <td colspan="4" style="text-align: center">No Records found.</td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mb-3"><%- include('../partials/pagination') %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
