@@ -61,10 +61,10 @@ config.modulePermissions = {
 
   },
   'service': {
-    'department.service.view': 'View Services',
-    'department.service.create': 'Create Service',
-    'department.service.edit': 'Edit Service',
-    'department.service.delete': 'Delete Service'
+    'service.service.view': 'View Services',
+    'service.service.create': 'Create Service',
+    'service.service.edit': 'Edit Service',
+    'service.service.delete': 'Delete Service'
   },
   configs: {
     'configs.cms-configs.view': 'View CMS Config',
