@@ -1,15 +1,14 @@
 const { checkSchema } = require('express-validator');
-const { emailTemplate } = require('shared/src/database/models');
 const { Op } = require('sequelize');
-const { checkMaxLength, required } = require('shared/src/helpers');
+const { checkMaxLength, required, numeric } = require('shared/src/helpers');
 
 let DepartmentValidation = checkSchema({
   name: {
     custom: {
       options: function (value, { req }) {
-        required('Title', value);
+        required('Department Title', value);
         if (typeof req.body.name !== 'undefined') {
-          return checkMaxLength('Title', req.body.name, 50);
+          return checkMaxLength('Department Title', req.body.name, 50);
         } else {
           return true;
         }
@@ -18,4 +17,34 @@ let DepartmentValidation = checkSchema({
   }
 });
 
-module.exports = { DepartmentValidation };
+
+let ServiceValidation = checkSchema({
+  name: {
+    custom: {
+      options: function (value, { req }) {
+        required('Service Title', value);
+        if (typeof req.body.name !== 'undefined') {
+          return checkMaxLength('Service Title', req.body.name, 50);
+        } else {
+          return true;
+        }
+      }
+    }
+  },
+
+  daily_limit: {
+    custom: {
+      options: function (value, { req }) {
+        required('Daily limit', value);
+        numeric('Daily limit', value);
+        if (typeof req.body.name !== 'undefined') {
+          return checkMaxLength('Daily limit', req.body.name, 50);
+        } else {
+          return true;
+        }
+      }
+    }
+  }
+});
+
+module.exports = { DepartmentValidation, ServiceValidation };
