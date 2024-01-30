@@ -1,5 +1,4 @@
 const { checkSchema } = require('express-validator');
-const { Op } = require('sequelize');
 const { checkMaxLength, required, numeric } = require('shared/src/helpers');
 
 let DepartmentValidation = checkSchema({
@@ -16,7 +15,6 @@ let DepartmentValidation = checkSchema({
     }
   }
 });
-
 
 let ServiceValidation = checkSchema({
   name: {

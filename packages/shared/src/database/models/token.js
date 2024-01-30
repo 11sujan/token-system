@@ -1,8 +1,6 @@
 'use strict';
 const sequelizePaginate = require('sequelize-paginate');
-const {
-  attributes
-} = require('../migrations/20240111083759-tokens.js');
+const { attributes } = require('../migrations/20240111083759-tokens.js');
 
 module.exports = (sequelize) => {
   const modelDefinition = {

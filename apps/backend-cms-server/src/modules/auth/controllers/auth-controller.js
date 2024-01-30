@@ -26,7 +26,6 @@ class AuthController {
 
   async login(req, res) {
     try {
-		
       if (req.session.user) {
         return res.redirect('/home');
       }

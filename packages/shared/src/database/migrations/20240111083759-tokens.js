@@ -25,9 +25,9 @@ const attributes = () => {
         key: 'id'
       }
     },
-    token: { type: DataTypes.STRING,  unique: true, allowNull: false },
+    token: { type: DataTypes.STRING, unique: true, allowNull: false },
     status: { type: DataTypes.BOOLEAN, allowNull: true },
-    expiration_date: {type: DataTypes.DATE, allowNull: false},
+    expiration_date: { type: DataTypes.DATE, allowNull: false },
     created_at: {
       type: DataTypes.DATE,
       defaultValue: Sequelize.fn('now')
