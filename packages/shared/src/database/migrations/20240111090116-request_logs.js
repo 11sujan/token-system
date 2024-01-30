@@ -25,7 +25,7 @@ const attributes = () => {
         key: 'id'
       }
     },
-    request_date: {type: DataTypes.DATE, allowNull: false},
+    request_date: { type: DataTypes.DATE, allowNull: false },
     created_at: {
       type: DataTypes.DATE,
       defaultValue: Sequelize.fn('now')

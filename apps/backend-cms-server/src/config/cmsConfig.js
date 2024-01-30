@@ -3,9 +3,10 @@ config.modules = {
   home: 'Dashboard',
   'user-management': 'User Management',
   'email-templates': 'Email Template',
-  'department': 'Department',
+  department: 'Department',
+  'frontend-users': 'Frontend Users',
   configs: 'Configuration',
-  'admin-logs': 'Logs',
+  'admin-logs': 'Logs'
 };
 
 config.modulePages = {
@@ -20,8 +21,9 @@ config.modulePages = {
     admins: 'Admins'
   },
   'email-templates': { 'email-templates': 'Email Template' },
-  'department': { 'department': 'Department' },
-  'service': { 'service': 'Service' },
+  department: { department: 'Department' },
+  service: { service: 'Service' },
+  'frontend-users': { 'frontend-users': 'Frontend Users' },
   configs: { configs: 'CMS Configuration' },
   'admin-logs': {
     'admin-logs': 'Admin Logs'
@@ -53,18 +55,20 @@ config.modulePermissions = {
     'email-templates.email-templates.edit': 'Edit Email Template',
     'email-templates.email-templates.delete': 'Delete Email Template'
   },
-  'department': {
+  department: {
     'department.department.view': 'View Departments',
     'department.department.create': 'Create Department',
     'department.department.edit': 'Edit Department',
-    'department.department.delete': 'Delete Department',
-
+    'department.department.delete': 'Delete Department'
   },
-  'service': {
+  service: {
     'service.service.view': 'View Services',
     'service.service.create': 'Create Service',
     'service.service.edit': 'Edit Service',
     'service.service.delete': 'Delete Service'
+  },
+  'frontend-users': {
+    'frontendUser.frontendUser.view': 'View Frontend Users'
   },
   configs: {
     'configs.cms-configs.view': 'View CMS Config',
@@ -81,12 +85,13 @@ config.moduleIcons = {
   home: 'icofont icofont-ui-home',
   'user-management': 'icofont icofont-ui-user',
   'email-templates': 'icofont icofont-ui-email',
-  'department': 'fa fa-building',
+  department: 'fa fa-building',
+  'frontend-users': 'fa fa-users',
   'payment-gateways': 'fa fa-credit-card',
   merchants: 'fa fa-industry',
   transactions: 'fa fa-exchange',
   projects: 'fa fa-tasks',
   configs: 'icofont icofont-tools-alt-2',
-  logs: 'fa fa-history'
+  'admin-logs': 'fa fa-history'
 };
 module.exports = config;

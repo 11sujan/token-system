@@ -11,6 +11,7 @@ const updateProfile = require('../modules/admin/routes/update-profile');
 const email = require('../modules/email/routes');
 const config = require('../modules/config/routes');
 const activityLogs = require('../modules/logs/routes/admin-logs');
+const frontendUsers = require('../modules/frontend-users/routes/');
 
 router.use(require('../modules/auth/routes'));
 router.use(require('../modules/dashboard/routes'));
@@ -39,6 +40,11 @@ router.use(
   '/department',
   [authenticateUser.isLoggedIn, sessionUserPermissions],
   department
+);
+router.use(
+  '/frontend-users',
+  [authenticateUser.isLoggedIn, sessionUserPermissions],
+  frontendUsers
 );
 router.use(
   '/configs',

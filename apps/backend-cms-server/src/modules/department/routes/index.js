@@ -51,8 +51,6 @@ router.delete(
   wrapNext(departmentController.delete)
 );
 
-
-
 // services
 router.get(
   '/:id/service',
@@ -68,11 +66,7 @@ router.get(
 
 router.post(
   '/:departmentId/service/create',
-  [
-    checkPermission('service.service.create'),
-    ServiceValidation,
-    validate
-  ],
+  [checkPermission('service.service.create'), ServiceValidation, validate],
   wrapNext(serviceController.add)
 );
 
@@ -83,11 +77,7 @@ router.get(
 );
 router.put(
   '/:departmentId/service/:id',
-  [
-    checkPermission('service.service.edit'),
-    ServiceValidation,
-    validate
-  ],
+  [checkPermission('service.service.edit'), ServiceValidation, validate],
   wrapNext(serviceController.edit)
 );
 

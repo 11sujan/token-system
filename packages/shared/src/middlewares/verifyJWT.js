@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { token } = require('shared/src/config');
-const { merchants } = require('shared/src/database/models');
+const { frontendUser } = require('shared/src/database/models');
 const http = require('http-status-codes');
 const statusCodeList = require('shared/src/constants/status-code-list');
 const { singleErrorFormat } = require('shared/src/errors');
@@ -32,7 +32,7 @@ const verifyJWT = (req, res, next) => {
         })
       );
     }
-    const merchantData = await merchants.count({
+    const merchantData = await frontendUser.count({
       where: {
         email: data.email
       }

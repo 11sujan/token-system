@@ -1,6 +1,5 @@
 const Controller = require('backend-cms/src/modules/base/controllers/baseController');
-const { checkBlankEntries } = require('shared/src/helpers');
-
+const { checkBlankEntries, base64encode } = require('shared/src/helpers');
 
 module.exports = class ServicesController extends Controller {
   constructor(opts) {
@@ -17,7 +16,10 @@ module.exports = class ServicesController extends Controller {
       this.innerPage = this.view + '/index';
       let data = await this.service.indexPageData(req);
       const department = await this.service.getDepartmentId(req.params.id);
-      data.breadcrumbs = [{ title: `Department (${department.name})`, link: '/department' }, { title: 'Service' }];
+      data.breadcrumbs = [
+        { title: `Department (${department.name})`, link: '/department' },
+        { title: 'Service' }
+      ];
       data.department_id = req.params.id;
       req.session.cancelUrl = req.originalUrl;
       return res.render(
@@ -36,7 +38,13 @@ module.exports = class ServicesController extends Controller {
       this.innerPage = this.view + '/add';
       const data = await this.service.createPageData(req);
       data.department_id = req.params.departmentId;
-      data.breadcrumbs = [{ title: 'Service', link: `/department/${req.params.departmentId}/service` }, { title: 'Create' }];
+      data.breadcrumbs = [
+        {
+          title: 'Service',
+          link: `/department/${req.params.departmentId}/service`
+        },
+        { title: 'Create' }
+      ];
       return res.render(
         'layout/base-inner',
         this.viewData(data, this.module + 'create', 'Add ' + this.title)
@@ -46,11 +54,13 @@ module.exports = class ServicesController extends Controller {
       return res.redirect('back');
     }
   }
-  
 
   async add(req, res) {
     try {
-      await this.service.create(checkBlankEntries(req.body),  req.params.departmentId);
+      await this.service.create(
+        checkBlankEntries(req.body),
+        req.params.departmentId
+      );
       req.flash('success_msg', this.title + ' added successfully.');
       return res.redirect(`/department/${req.params.departmentId}/service`);
     } catch (error) {
@@ -80,8 +90,7 @@ module.exports = class ServicesController extends Controller {
     }
   }
 
-  async edit(req, res)
-  {
+  async edit(req, res) {
     try {
       await this.service.findAndUpdate(
         req.params.id,
@@ -96,5 +105,4 @@ module.exports = class ServicesController extends Controller {
       return res.redirect(`/department/${req.params.departmentId}/service`);
     }
   }
-
 };
